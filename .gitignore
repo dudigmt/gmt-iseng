@@ -17,3 +17,6 @@ local_settings.py
 # OS
 .DS_Store
 Thumbs.db
+
+.django_tailwind_cli/
+assets/
