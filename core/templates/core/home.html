@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMT Iseng - Futuristic</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>GMT Iseng</h1>
+        <p>Selamat datang di project iseng dengan gaya minimalis-futuristic. CSS manual, no ribet!</p>
+        <a href="{% url 'login' %}" style="text-decoration: none;">
+            <button class="btn">Login</button>
+        </a>       
+    </div>
+</body>
+</html>

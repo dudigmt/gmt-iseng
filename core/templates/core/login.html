@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | GMT</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="split-container">
+        <!-- Left side - Visual -->
+        <div class="visual-side">
+            <div class="visual-content">
+                <h1 class="visual-title">GMT Iseng</h1>
+                <p class="visual-subtitle">Project iseng dengan gaya minimalis modern</p>
+                <div class="visual-accent"></div>
+            </div>
+        </div>
+        
+        <!-- Right side - Login Form -->
+        <div class="form-side">
+            <div class="form-container">
+                <h2 class="form-title">Welcome back</h2>
+                <p class="form-subtitle">Silahkan masuk ke akun Anda</p>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="error-message">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                
+                <form class="login-form" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="username" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="••••••••" required>
+                    </div>
+                    
+                    <button type="submit" class="login-btn-modern">Masuk</button>
+                    
+                    <div class="form-footer">
+                        <span>Belum punya akun?</span>
+                        <a href="#">Daftar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
