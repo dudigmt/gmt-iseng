@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" 
+      x-data="{ adminTheme: $persist('auto').as('adminTheme') }" 
+      x-bind:class="{'dark': adminTheme === 'dark' || (adminTheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)}" 
+      x-cloak>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GMT Iseng{% endblock %}</title>
+
+    <!-- Unfold Fonts -->
+    <link href="{% static 'unfold/fonts/inter/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'unfold/fonts/material-symbols/styles.css' %}" rel="stylesheet">
+
+    <!-- Unfold CSS -->
+    <link href="{% static 'unfold/css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'unfold/css/simplebar/simplebar.css' %}" rel="stylesheet">
+
+    <!-- Alpine.js & Dependencies -->
+    <script src="{% static 'unfold/js/alpine/alpine.anchor.js' %}" defer></script>
+    <script src="{% static 'unfold/js/alpine/alpine.persist.js' %}" defer></script>
+    <script src="{% static 'unfold/js/alpine/alpine.js' %}" defer></script>
+    
+    <!-- HTMX & Chart.js -->
+    <script src="{% static 'unfold/js/htmx/htmx.js' %}"></script>
+    <script src="{% static 'unfold/js/chart/chart.js' %}"></script>
+    
+    <!-- Unfold App JS -->
+    <script src="{% static 'unfold/js/app.js' %}"></script>
+    <script src="{% static 'unfold/js/simplebar/simplebar.js' %}"></script>
+
+    <style>
+        .unfold-content-custom { padding: 2rem !important; }
+        .unfold-card-custom {
+            background: white;
+            border-radius: 0.75rem;
+            border: 1px solid var(--color-base-200);
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+        .unfold-card-custom:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .unfold-grid-custom {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width: 1200px) { .unfold-grid-custom { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .unfold-grid-custom { grid-template-columns: 1fr; } }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body class="antialiased bg-base-50 font-sans text-font-default-light text-sm dark:bg-base-900 dark:text-font-default-dark"
+      x-data="{
+          sidebarMobileOpen: false,
+          sidebarDesktopOpen: (localStorage.getItem('sidebarDesktopOpen') !== null) ? (localStorage.getItem('sidebarDesktopOpen') == '1') : true
+      }"
+      x-init="$watch('sidebarDesktopOpen', value => localStorage.setItem('sidebarDesktopOpen', value ? '1' : '0'))">
+
+    <style id="unfold-theme-colors">
+        :root {
+            --color-base-50: oklch(98.5% .002 247.839);
+            --color-base-100: oklch(96.7% .003 264.542);
+            --color-base-200: oklch(92.8% .006 264.531);
+            --color-base-300: oklch(87.2% .01 258.338);
+            --color-base-400: oklch(70.7% .022 261.325);
+            --color-base-500: oklch(55.1% .027 264.364);
+            --color-base-600: oklch(44.6% .03 256.802);
+            --color-base-700: oklch(37.3% .034 259.733);
+            --color-base-800: oklch(27.8% .033 256.848);
+            --color-base-900: oklch(21% .034 264.665);
+            --color-base-950: oklch(13% .028 261.692);
+            --color-primary-50: oklch(97.7% .014 308.299);
+            --color-primary-100: oklch(94.6% .033 307.174);
+            --color-primary-200: oklch(90.2% .063 306.703);
+            --color-primary-300: oklch(82.7% .119 306.383);
+            --color-primary-400: oklch(71.4% .203 305.504);
+            --color-primary-500: oklch(62.7% .265 303.9);
+            --color-primary-600: oklch(55.8% .288 302.321);
+            --color-primary-700: oklch(49.6% .265 301.924);
+            --color-primary-800: oklch(43.8% .218 303.724);
+            --color-primary-900: oklch(38.1% .176 304.987);
+            --color-primary-950: oklch(29.1% .149 302.717);
+            --color-font-subtle-light: var(--color-base-500);
+            --color-font-subtle-dark: var(--color-base-400);
+            --color-font-default-light: var(--color-base-600);
+            --color-font-default-dark: var(--color-base-300);
+            --color-font-important-light: var(--color-base-900);
+            --color-font-important-dark: var(--color-base-100);
+        }
+    </style>
+
+    <div id="page" class="flex max-w-full min-h-screen">
+        <!-- Sidebar -->
+        <div class="relative z-60">
+            <div class="fixed hidden xl:relative xl:block w-[288px]" 
+                 x-bind:class="{'xl:hidden!': !sidebarDesktopOpen, 'block!': sidebarMobileOpen}">
+                <div class="bg-base-50 relative z-30 dark:bg-base-900">
+                    <div id="nav-sidebar" class="bg-base-50 border-r border-base-200 bottom-0 fixed max-h-screen top-0 w-[288px] dark:border-base-800 dark:bg-base-900">
+                        
+                        <!-- ========== HEADER (selalu di atas) ========== -->
+                        <div class="border-b border-base-200 flex gap-3 items-center h-[65px] dark:border-base-800 px-3">
+                            <div class="bg-transparent flex font-semibold gap-3 grow min-w-0 h-[64px] items-center px-3">
+                                <a href="/" class="bg-primary-600 flex h-[38px] items-center justify-center rounded-default shrink-0 text-white text-xs w-[38px]">
+                                    <span class="material-symbols-outlined md-18">dashboard</span>
+                                </a>
+                                <div class="flex flex-col grow justify-center min-w-0">
+                                    <div class="text-important tracking-tight *:truncate xl:text-base">
+                                        <div id="site-name"><a href="/">GMT Iseng</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined block cursor-pointer h-[18px] xl:hidden! hover:text-base-700 dark:hover:text-base-200" 
+                                  x-on:click="sidebarMobileOpen = !sidebarMobileOpen">close</span>
+                        </div>
+
+                        <!-- ========== NAVIGASI (BISA DI-SCROLL) ========== -->
+                        <div id="nav-sidebar-apps" class="h-0 grow overflow-auto" data-simplebar>
+                            <div class="app-auth module">
+                                <ol class="px-6">
+                                    <!-- Dashboard -->
+                                    <li>
+                                        <h2>
+                                            <a href="{% url 'dashboard' %}" class="block font-semibold mb-2 mt-4 text-font-important-light text-sm truncate dark:text-font-important-dark">
+                                                MAIN MENU
+                                            </a>
+                                        </h2>
+                                        <ol class="flex flex-col gap-0.5">
+                                            <li class="model-group">
+                                                <a href="{% url 'dashboard' %}" 
+                                                   class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500 {% if request.resolver_match.url_name == 'dashboard' %}text-primary-600 dark:text-primary-500{% endif %}">
+                                                    <span class="material-symbols-outlined mr-3">dashboard</span>
+                                                    Dashboard
+                                                </a>
+                                            </li>
+                                    </li>
+                                </ol>
+
+                                <!-- Dummy Menu HR -->
+                                <ol class="px-6">
+                                    <li>
+                                        <h2 class="block font-semibold mb-2 mt-4 text-font-important-light text-sm truncate dark:text-font-important-dark">
+                                            HUMAN RESOURCES
+                                        </h2>
+                                        <ol class="flex flex-col gap-0.5">
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">group</span>
+                                                    Karyawan
+                                                </a>
+                                            </li>
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">attendance</span>
+                                                    Absensi
+                                                </a>
+                                            </li>
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">payroll</span>
+                                                    Penggajian
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+
+                                <!-- Dummy Menu Produksi -->
+                                <ol class="px-6">
+                                    <li>
+                                        <h2 class="block font-semibold mb-2 mt-4 text-font-important-light text-sm truncate dark:text-font-important-dark">
+                                            PRODUCTION
+                                        </h2>
+                                        <ol class="flex flex-col gap-0.5">
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">factory</span>
+                                                    Produksi Harian
+                                                </a>
+                                            </li>
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">inventory</span>
+                                                    Stok Bahan
+                                                </a>
+                                            </li>
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">quality</span>
+                                                    Quality Control
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+
+                                <!-- Dummy Menu Finance -->
+                                <ol class="px-6">
+                                    <li>
+                                        <h2 class="block font-semibold mb-2 mt-4 text-font-important-light text-sm truncate dark:text-font-important-dark">
+                                            FINANCE
+                                        </h2>
+                                        <ol class="flex flex-col gap-0.5">
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">payments</span>
+                                                    Revenue
+                                                </a>
+                                            </li>
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">receipt</span>
+                                                    Billing
+                                                </a>
+                                            </li>
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">account_balance</span>
+                                                    Cash Flow
+                                                </a>
+                                            </li>
+                                            <li class="model-group">
+                                                <a href="#" class="flex items-center h-[38px] -mx-3 px-3 rounded-default truncate hover:text-primary-600 dark:hover:text-primary-500">
+                                                    <span class="material-symbols-outlined mr-3">expense</span>
+                                                    Expense
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>  <!-- AKHIR NAVIGASI -->
+
+                        <!-- ========== USER PROFILE (FOOTER - DI BAWAH) ========== -->
+                        <div class="border-t border-base-200 px-6 py-3 relative dark:border-base-800" x-data="{ openUserLinks: false }">
+                            <nav class="absolute bg-white border border-base-200 flex flex-col leading-none py-1 rounded-default shadow-lg bottom-[73px] left-3 right-3 z-50 dark:bg-base-800 dark:border-base-700" 
+                                 x-cloak x-show="openUserLinks" x-transition x-on:click.outside="openUserLinks = false">
+                                <!-- Theme Switcher -->
+                                <div class="border-b border-base-200 flex flex-row gap-1 mb-1 pb-1 px-2 dark:border-base-700">
+                                    <a class="cursor-pointer flex flex-row grow px-2 py-1.5 rounded-default hover:bg-base-100 hover:text-base-700 dark:hover:bg-base-700 dark:hover:text-base-200"
+                                       x-on:click="adminTheme = 'light'"
+                                       x-bind:class="adminTheme == 'light' && 'text-primary-600 dark:text-primary-500'">
+                                        <span class="material-symbols-outlined mr-2">light_mode</span> Light
+                                    </a>
+                                    <a class="cursor-pointer flex flex-row grow px-2 py-1.5 rounded-default hover:bg-base-100 hover:text-base-700 dark:hover:bg-base-700 dark:hover:text-base-200"
+                                       x-on:click="adminTheme = 'dark'"
+                                       x-bind:class="adminTheme == 'dark' && 'text-primary-600 dark:text-primary-500'">
+                                        <span class="material-symbols-outlined mr-2">dark_mode</span> Dark
+                                    </a>
+                                    <a class="cursor-pointer flex flex-row grow px-2 py-1.5 rounded-default hover:bg-base-100 hover:text-base-700 dark:hover:bg-base-700 dark:hover:text-base-200"
+                                       x-on:click="adminTheme = 'auto'"
+                                       x-bind:class="adminTheme == 'auto' && 'text-primary-600 dark:text-primary-500'">
+                                        <span class="material-symbols-outlined mr-2">computer</span> System
+                                    </a>
+                                </div>
+                                <!-- Logout -->
+                                <div class="border-t border-base-200 mt-1 pt-1 dark:border-base-700">
+                                    <form id="logout-form" method="post" action="{% url 'logout' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="bg-none flex cursor-pointer items-center px-3 py-1.5 text-left text-red-700 rounded-default w-full hover:bg-red-100 dark:hover:bg-red-500/20 dark:text-red-400 dark:hover:text-red-400">
+                                            Log out <span class="ml-auto material-symbols-outlined text-red-700 dark:text-red-400">logout</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </nav>
+
+                            <div class="cursor-pointer flex flex-row gap-3 items-center min-h-[64px] -mx-6 -my-3 px-6 py-3 hover:bg-base-100 dark:hover:bg-base-800" 
+                                 x-on:click="openUserLinks = !openUserLinks"
+                                 x-bind:class="{'bg-base-100 dark:bg-base-800': openUserLinks}">
+                                <div class="bg-base-200 bg-cover h-[38px] font-semibold flex items-center justify-center rounded-default relative select-none text-important min-w-[38px] w-[38px] dark:bg-base-700 after:absolute after:inset-0 after:inset-ring after:inset-ring-base-800/10 dark:after:inset-ring-base-200/10 after:rounded-default">
+                                    {{ user.username|first|upper }}
+                                </div>
+                                <div class="flex flex-col select-none min-w-0">
+                                    <div class="font-semibold text-important tracking-tight truncate">{{ user.username }}</div>
+                                </div>
+                                <span class="material-symbols-outlined ml-auto select-none text-font-default-light dark:text-font-default-dark">unfold_more</span>
+                            </div>
+                        </div>  <!-- AKHIR USER PROFILE -->
+
+                    </div>  <!-- AKHIR nav-sidebar -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="main" class="bg-white flex flex-col grow min-w-0 dark:bg-base-900">
+            <!-- Header -->
+            <div class="bg-white border-b border-base-200 mb-6 px-4 z-40 dark:bg-base-900 dark:border-base-800 dark:text-font-default-dark">
+                <div class="container flex items-center h-16 mx-auto py-4">
+                    <div id="header-inner" class="flex items-center relative w-full">
+                        <div class="flex items-center w-full">
+                            <div class="flex flex-row grow font-semibold items-center min-w-0 mr-3">
+                                <span class="cursor-pointer flex flex-row items-center">
+                                    <span class="material-symbols-outlined hidden! xl:block!" 
+                                          x-on:click="sidebarDesktopOpen = !sidebarDesktopOpen; localStorage.setItem('sidebarDesktopOpen', sidebarDesktopOpen ? '1' : '0');">
+                                        dock_to_right
+                                    </span>
+                                    <span class="material-symbols-outlined block! xl:hidden!" 
+                                          x-on:click="sidebarMobileOpen = !sidebarMobileOpen">
+                                        dock_to_right
+                                    </span>
+                                </span>
+                                <span class="block bg-base-200 h-5 mx-3 w-px dark:bg-base-700"></span>
+                                <h1 class="overflow-hidden leading-5 text-ellipsis text-font-important-light whitespace-nowrap xl:text-base dark:text-font-important-dark">
+                                    <span class="align-middle inline-block leading-5 tracking-tight">{% block page_title %}Dashboard{% endblock %}</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="px-4 pb-4 grow">
+                <div id="content" class="container mx-auto">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

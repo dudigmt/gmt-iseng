@@ -1,10 +1,7 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required   # <-- ini yg lo bilang
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return redirect('login')
@@ -17,7 +14,7 @@ def login_view(request):
         
         if user is not None:
             login(request, user)
-            return redirect('dashboard')  # <-- ganti dari home ke dashboard
+            return redirect('dashboard')
         else:
             messages.error(request, 'Username atau password salah')
     
@@ -25,7 +22,6 @@ def login_view(request):
 
 @login_required
 def dashboard(request):
-
     context = {
         'hr_count': 156,
         'prod_count': 12450,
