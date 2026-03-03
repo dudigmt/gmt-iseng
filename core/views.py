@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required   # <-- ini yg lo bilang
 
 def home(request):
     return redirect('login')
@@ -24,6 +25,7 @@ def login_view(request):
 
 @login_required
 def dashboard(request):
+
     context = {
         'hr_count': 156,
         'prod_count': 12450,
