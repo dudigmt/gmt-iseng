@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | GMT</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>GMT Iseng</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">HR</a>
+                <a href="#" class="nav-item">Production</a>
+                <a href="#" class="nav-item">Finance</a>
+                <a href="#" class="nav-item">Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="dashboard-header">
+                <h1>Dashboard</h1>
+                <p>Selamat datang, {{ user.username }}</p>
+            </header>
+
+            <!-- Metrics Cards -->
+            <div class="metrics-grid">
+                <!-- HR Card -->
+                <div class="metric-card">
+                    <div class="metric-icon">👥</div>
+                    <div class="metric-content">
+                        <h3>HR</h3>
+                        <div class="metric-value">{{ hr_count }}</div>
+                        <div class="metric-change positive">{{ hr_change }} karyawan</div>
+                    </div>
+                </div>
+
+                <!-- Production Card -->
+                <div class="metric-card">
+                    <div class="metric-icon">⚙️</div>
+                    <div class="metric-content">
+                        <h3>Production</h3>
+                        <div class="metric-value">{{ prod_count }}</div>
+                        <div class="metric-change positive">{{ prod_change }} dari kemarin</div>
+                    </div>
+                </div>
+
+                <!-- Finance Card -->
+                <div class="metric-card">
+                    <div class="metric-icon">💰</div>
+                    <div class="metric-content">
+                        <h3>Finance</h3>
+                        <div class="metric-value">{{ fin_total }}</div>
+                        <div class="metric-change positive">{{ fin_change }} dari target</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder for charts / more content -->
+            <div class="recent-activity">
+                <h2>Aktivitas Terkini</h2>
+                <p>Fitur ini sedang dikembangkan...</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
