@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Marketing Dashboard | GMT Iseng{% endblock %}
+{% block page_title %}Marketing Dashboard{% endblock %}
+{% block page_subtitle %}Ringkasan performa marketing{% endblock %}
+
+{% block content %}
+<div class="grid-4">
+    <div class="card">
+        <div class="card-header"><h3>Order Masuk</h3></div>
+        <div class="card-value">48</div>
+        <div class="card-change negative"><i class="fas fa-arrow-down"></i> 2% dari target</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Konversi Lead</h3></div>
+        <div class="card-value">62%</div>
+        <div class="card-change positive"><i class="fas fa-arrow-up"></i> 7%</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Nilai Rata-rata</h3></div>
+        <div class="card-value">Rp 2.1M</div>
+        <div class="card-change">per transaksi</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Aktif Campaign</h3></div>
+        <div class="card-value">5</div>
+        <div class="card-change">2 baru bulan ini</div>
+    </div>
+</div>
+{% endblock %}

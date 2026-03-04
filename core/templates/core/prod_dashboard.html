@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Production Dashboard | GMT Iseng{% endblock %}
+{% block page_title %}Production Dashboard{% endblock %}
+{% block page_subtitle %}Ringkasan produksi harian{% endblock %}
+
+{% block content %}
+<div class="grid-4">
+    <div class="card">
+        <div class="card-header"><h3>Produksi Hari Ini</h3></div>
+        <div class="card-value">12.450</div>
+        <div class="card-change positive"><i class="fas fa-arrow-up"></i> +8% dari kemarin</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Efisiensi Mesin</h3></div>
+        <div class="card-value">87%</div>
+        <div class="card-change positive"><i class="fas fa-arrow-up"></i> 5%</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Downtime</h3></div>
+        <div class="card-value">2.3 jam</div>
+        <div class="card-change negative"><i class="fas fa-arrow-up"></i> 0.5 jam</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Quality Control</h3></div>
+        <div class="card-value">98.5%</div>
+        <div class="card-change positive"><i class="fas fa-arrow-up"></i> 0.2%</div>
+    </div>
+</div>
+{% endblock %}

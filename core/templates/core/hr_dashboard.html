@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %}HR Dashboard | GMT Iseng{% endblock %}
+{% block page_title %}HR Dashboard{% endblock %}
+{% block page_subtitle %}Ringkasan data kepegawaian{% endblock %}
+
+{% block content %}
+<div class="grid-4">
+    <div class="card">
+        <div class="card-header"><h3>Total Karyawan</h3></div>
+        <div class="card-value">156</div>
+        <div class="card-change positive"><i class="fas fa-arrow-up"></i> +12 bulan ini</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Cuti Hari Ini</h3></div>
+        <div class="card-value">8</div>
+        <div class="card-change warning"><i class="fas fa-exclamation-triangle"></i> 3 pending</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Kehadiran</h3></div>
+        <div class="card-value">94%</div>
+        <div class="card-change positive"><i class="fas fa-arrow-up"></i> 2% dari bulan lalu</div>
+    </div>
+    <div class="card">
+        <div class="card-header"><h3>Pengajuan Baru</h3></div>
+        <div class="card-value">3</div>
+        <div class="card-change">2 cuti, 1 izin</div>
+    </div>
+</div>
+{% endblock %}

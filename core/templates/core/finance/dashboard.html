@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Finance Dashboard | GMT Iseng{% endblock %}
+
+{% block page_title %}Finance Dashboard{% endblock %}
+{% block page_subtitle %}Manajemen Keuangan{% endblock %}
+
+{% block content %}
+    <div class="grid-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Revenue</h3>
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            </div>
+            <div class="card-value">Rp 2,4M</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> +15%</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Profit Margin</h3>
+                <div class="card-icon"><i class="fas fa-percentage"></i></div>
+            </div>
+            <div class="card-value">32%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 3%</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Cash Flow</h3>
+                <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
+            </div>
+            <div class="card-value">+Rp 580M</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 12%</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Outstanding</h3>
+                <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
+            </div>
+            <div class="card-value">Rp 420M</div>
+            <div class="card-change warning">30 hari+</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Transaksi Terkini</h2>
+    <div class="card" style="padding: 1rem;">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <span style="background: var(--primary-50); padding: 0.5rem; border-radius: 0.5rem;">
+                    <i class="fas fa-arrow-down" style="color: var(--primary-500);"></i>
+                </span>
+                <div><strong>Pembayaran masuk</strong> - PT Maju Jaya (Rp 45M)</div>
+                <small style="margin-left: auto; color: var(--base-400);">2 jam lalu</small>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <span style="background: var(--primary-50); padding: 0.5rem; border-radius: 0.5rem;">
+                    <i class="fas fa-arrow-up" style="color: var(--primary-500);"></i>
+                </span>
+                <div><strong>Pengeluaran operasional</strong> - Listrik (Rp 12M)</div>
+                <small style="margin-left: auto; color: var(--base-400);">5 jam lalu</small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

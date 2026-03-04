@@ -54,3 +54,39 @@ def dashboard(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+def hr_dashboard(request):
+    context = {
+        'total_employee': 156,
+        'on_leave': 8,
+        'attendance_rate': 94,
+        'new_applications': 3,
+    }
+    return render(request, 'core/hr/dashboard.html', context)
+
+def production_dashboard(request):
+    context = {
+        'daily_output': 12450,
+        'efficiency': 87,
+        'downtime': 2.3,
+        'monthly_target': 78,
+    }
+    return render(request, 'core/production/dashboard.html', context)
+
+def finance_dashboard(request):
+    context = {
+        'revenue': 'Rp 2,4M',
+        'profit_margin': 32,
+        'cash_flow': '+Rp 580M',
+        'outstanding': 'Rp 420M',
+    }
+    return render(request, 'core/finance/dashboard.html', context)
+
+def sales_dashboard(request):
+    context = {
+        'conversion_rate': '62%',
+        'avg_deal_value': 'Rp 2.1M',
+        'active_campaigns': 12,
+        'leads_count': 48,
+    }
+    return render(request, 'core/sales/dashboard.html', context)

@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Sales Dashboard | GMT Iseng{% endblock %}
+
+{% block page_title %}Sales Dashboard{% endblock %}
+{% block page_subtitle %}Ringkasan aktivitas penjualan{% endblock %}
+
+{% block content %}
+    <div class="grid-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Conversion Rate</h3>
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            </div>
+            <div class="card-value">{{ conversion_rate }}</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 7% dari bulan lalu</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Avg Deal Value</h3>
+                <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
+            </div>
+            <div class="card-value">{{ avg_deal_value }}</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 5%</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Active Campaigns</h3>
+                <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+            </div>
+            <div class="card-value">{{ active_campaigns }}</div>
+            <div class="card-change">3 akan berakhir</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>New Leads</h3>
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+            </div>
+            <div class="card-value">{{ leads_count }}</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 12%</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Recent Activities</h2>
+    <div class="card" style="padding: 1rem;">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <span style="background: var(--primary-50); padding: 0.5rem; border-radius: 0.5rem;">
+                    <i class="fas fa-check-circle" style="color: var(--primary-500);"></i>
+                </span>
+                <div><strong>Deal closed</strong> - PT Maju Jaya (Rp 45M)</div>
+                <small style="margin-left: auto; color: var(--base-400);">2 jam lalu</small>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <span style="background: var(--primary-50); padding: 0.5rem; border-radius: 0.5rem;">
+                    <i class="fas fa-user-plus" style="color: var(--primary-500);"></i>
+                </span>
+                <div><strong>New lead</strong> - PT Sukses Abadi</div>
+                <small style="margin-left: auto; color: var(--base-400);">5 jam lalu</small>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <span style="background: var(--primary-50); padding: 0.5rem; border-radius: 0.5rem;">
+                    <i class="fas fa-calendar-check" style="color: var(--primary-500);"></i>
+                </span>
+                <div><strong>Meeting scheduled</strong> - Client A</div>
+                <small style="margin-left: auto; color: var(--base-400);">kemarin</small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

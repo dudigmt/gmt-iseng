@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Production Dashboard | GMT Iseng{% endblock %}
+
+{% block page_title %}Production Dashboard{% endblock %}
+{% block page_subtitle %}Manajemen Produksi{% endblock %}
+
+{% block content %}
+    <div class="grid-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Produksi Hari Ini</h3>
+                <div class="card-icon"><i class="fas fa-industry"></i></div>
+            </div>
+            <div class="card-value">12.450</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> +8%</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Efisiensi Mesin</h3>
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            </div>
+            <div class="card-value">87%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 5%</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Downtime</h3>
+                <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            </div>
+            <div class="card-value">2.3 jam</div>
+            <div class="card-change negative"><i class="fas fa-arrow-up"></i> 0.5 jam</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Target Bulanan</h3>
+                <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+            </div>
+            <div class="card-value">78%</div>
+            <div class="card-change">tersisa 22%</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Aktivitas Produksi</h2>
+    <div class="card" style="padding: 1rem;">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <span style="background: var(--primary-50); padding: 0.5rem; border-radius: 0.5rem;">
+                    <i class="fas fa-check-circle" style="color: var(--primary-500);"></i>
+                </span>
+                <div><strong>Mesin #3</strong> selesai maintenance</div>
+                <small style="margin-left: auto; color: var(--base-400);">1 jam lalu</small>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <span style="background: var(--primary-50); padding: 0.5rem; border-radius: 0.5rem;">
+                    <i class="fas fa-exclamation-circle" style="color: var(--primary-500);"></i>
+                </span>
+                <div><strong>Quality issue</strong> - Batch #P123</div>
+                <small style="margin-left: auto; color: var(--base-400);">3 jam lalu</small>
+            </div>
+        </div>
+    </div>
+{% endblock %}
