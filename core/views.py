@@ -55,15 +55,6 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-def hr_dashboard(request):
-    context = {
-        'total_employee': 156,
-        'on_leave': 8,
-        'attendance_rate': 94,
-        'new_applications': 3,
-    }
-    return render(request, 'core/hr/dashboard.html', context)
-
 def production_dashboard(request):
     context = {
         'daily_output': 12450,

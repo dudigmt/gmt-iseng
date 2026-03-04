@@ -747,14 +747,14 @@
                 <!-- HR Section -->
                 <div class="nav-section">
                     <div class="nav-section-title">
-                        <a href="{% url 'hr_dashboard' %}" class="section-link" @click.stop>
+                        <a href="{% url 'hr:dashboard' %}" class="section-link" @click.stop>
                             <i class="fas fa-users"></i>
                             <span>HR</span>
                         </a>
                         <i class="fas" :class="hrOpen ? 'fa-chevron-down' : 'fa-chevron-right'" @click="hrOpen = !hrOpen"></i>
                     </div>
                     <div class="nav-items" x-show="hrOpen" x-collapse>
-                        <a href="#" class="nav-item"><i class="fas fa-users"></i><span>Karyawan</span></a>
+                        <a href="{% url 'hr:employee_list' %}" class="nav-item"><i class="fas fa-users"></i><span>Karyawan</span></a>
                         <a href="#" class="nav-item"><i class="fas fa-clock"></i><span>Absensi</span></a>
                         <a href="#" class="nav-item"><i class="fas fa-wallet"></i><span>Penggajian</span></a>
                     </div>
@@ -763,7 +763,7 @@
                 <!-- Production Section -->
                 <div class="nav-section">
                     <div class="nav-section-title">
-                        <a href="{% url 'production_dashboard' %}" class="section-link" @click.stop>
+                        <a href="{% url 'production:dashboard' %}" class="section-link" @click.stop>
                             <i class="fas fa-industry"></i>
                             <span>PROD</span>
                         </a>
@@ -779,7 +779,7 @@
                 <!-- Finance Section -->
                 <div class="nav-section">
                     <div class="nav-section-title">
-                        <a href="{% url 'finance_dashboard' %}" class="section-link" @click.stop>
+                        <a href="{% url 'finance:dashboard' %}" class="section-link" @click.stop>
                             <i class="fas fa-chart-line"></i>
                             <span>FIN</span>
                         </a>
@@ -796,7 +796,7 @@
                 <!-- Sales Section -->
                 <div class="nav-section">
                     <div class="nav-section-title">
-                        <a href="{% url 'sales_dashboard' %}" class="section-link" @click.stop>
+                        <a href="{% url 'sales:dashboard' %}" class="section-link" @click.stop>
                             <i class="fas fa-bullhorn"></i>
                             <span>SALES</span>
                         </a>
