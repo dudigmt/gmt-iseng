@@ -1,0 +1,90 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboard | GMT Iseng{% endblock %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="unfold-content-custom">
+    <!-- Welcome Message -->
+    <div class="mb-6">
+        <p class="text-font-default-light dark:text-font-default-dark">
+            Selamat datang kembali, <strong>{{ user.username }}</strong>
+        </p>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="unfold-grid-custom mb-8">
+        <!-- HR Card -->
+        <div class="unfold-card-custom">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-font-subtle-light dark:text-font-subtle-dark text-sm font-semibold uppercase tracking-wider">HR</h3>
+                <span class="material-symbols-outlined text-primary-500">group</span>
+            </div>
+            <div class="text-3xl font-bold text-font-important-light dark:text-font-important-dark mb-2">
+                {{ hr_count|default:"156" }}
+            </div>
+            <div class="flex items-center text-green-600 dark:text-green-400 text-sm">
+                <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                {{ hr_change|default:"+12" }} karyawan
+            </div>
+        </div>
+
+        <!-- Production Card -->
+        <div class="unfold-card-custom">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-font-subtle-light dark:text-font-subtle-dark text-sm font-semibold uppercase tracking-wider">Production</h3>
+                <span class="material-symbols-outlined text-primary-500">factory</span>
+            </div>
+            <div class="text-3xl font-bold text-font-important-light dark:text-font-important-dark mb-2">
+                {{ prod_count|default:"12.450" }}
+            </div>
+            <div class="flex items-center text-green-600 dark:text-green-400 text-sm">
+                <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                {{ prod_change|default:"+8%" }} dari target
+            </div>
+        </div>
+
+        <!-- Finance Card -->
+        <div class="unfold-card-custom">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-font-subtle-light dark:text-font-subtle-dark text-sm font-semibold uppercase tracking-wider">Finance</h3>
+                <span class="material-symbols-outlined text-primary-500">payments</span>
+            </div>
+            <div class="text-3xl font-bold text-font-important-light dark:text-font-important-dark mb-2">
+                {{ fin_total|default:"Rp 2.4M" }}
+            </div>
+            <div class="flex items-center text-green-600 dark:text-green-400 text-sm">
+                <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                {{ fin_change|default:"+15%" }}
+            </div>
+        </div>
+
+        <!-- Sales Card -->
+        <div class="unfold-card-custom">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-font-subtle-light dark:text-font-subtle-dark text-sm font-semibold uppercase tracking-wider">Sales</h3>
+                <span class="material-symbols-outlined text-primary-500">trending_up</span>
+            </div>
+            <div class="text-3xl font-bold text-font-important-light dark:text-font-important-dark mb-2">
+                48
+            </div>
+            <div class="flex items-center text-red-600 dark:text-red-400 text-sm">
+                <span class="material-symbols-outlined text-sm mr-1">trending_down</span>
+                2% dari target
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="unfold-card-custom">
+        <h2 class="text-lg font-semibold text-font-important-light dark:text-font-important-dark mb-4">
+            Aktivitas Terkini
+        </h2>
+        <div class="text-font-default-light dark:text-font-default-dark text-center py-8">
+            <span class="material-symbols-outlined text-4xl mb-2 block opacity-50">info</span>
+            Belum ada aktivitas terbaru
+        </div>
+    </div>
+</div>
+{% endblock %}
