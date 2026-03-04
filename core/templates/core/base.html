@@ -843,7 +843,13 @@
                     </div>
                     <div class="user-info" x-show="sidebarEffectiveOpen">
                         <div class="user-name">{{ user.username }}</div>
-                        <div class="user-role">{{ user_role }}</div>
+                        <div class="user-role">
+                            {% for group in groups %}
+                                {{ group.name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                -
+                            {% endfor %}
+                        </div>
                     </div>
                     <i class="fas" :class="userDropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'" x-show="sidebarEffectiveOpen"></i>
                 </div>
