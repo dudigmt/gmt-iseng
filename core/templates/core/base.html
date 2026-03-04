@@ -364,10 +364,97 @@
         .dark .header-title h1 { color: var(--base-800); }
         .header-title p { color: var(--base-500); }
 
+        /* Section title */
+        .section-title {
+            margin: 2rem 0 1rem;
+            color: var(--base-800);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .dark .section-title {
+            color: var(--base-600);
+        }
+
         /* Transisi untuk collapsible */
         .x-collapse {
             overflow: hidden;
             transition: max-height 0.3s ease;
+        }
+
+        /* Grid */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 0.75rem;
+            border: 1px solid var(--base-200);
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+        .dark .card {
+            background: var(--base-100);
+            border-color: var(--base-300);
+        }
+        .card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .card-header h3 {
+            color: var(--base-500);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .card-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--primary-50);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-500);
+        }
+        .dark .card-icon {
+            background: rgba(0,71,171,0.2);
+        }
+        .card-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--base-900);
+            margin-bottom: 0.5rem;
+        }
+        .dark .card-value {
+            color: var(--base-800);
+        }
+        .card-change {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+        .card-change.positive { color: var(--forest-green); }
+        .card-change.negative { color: #ef4444; }
+        .card-change.warning { color: var(--vr46-yellow); }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .grid-4 { grid-template-columns: 1fr; }
         }
     </style>
 </head>

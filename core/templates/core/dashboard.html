@@ -6,7 +6,7 @@
 {% block page_subtitle %}Selamat datang kembali, {{ user.username }}{% endblock %}
 
 {% block content %}
-    <!-- Executive Overview -->
+    <!-- Executive Summary -->
     <div class="grid-4">
         <div class="card">
             <div class="card-header">
@@ -43,122 +43,158 @@
     </div>
 
     <!-- HR Section -->
-    <h2 style="margin-bottom: 1rem; color: var(--base-800);">Human Resources</h2>
+    <h2 class="section-title">Human Resources</h2>
     <div class="grid-4">
         <div class="card">
-            <div class="card-header"><h3>Cuti Hari Ini</h3></div>
+            <div class="card-header">
+                <h3>Cuti Hari Ini</h3>
+            </div>
             <div class="card-value">8</div>
             <div class="card-change warning"><i class="fas fa-exclamation-triangle"></i> 3 pending</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Kehadiran</h3></div>
+            <div class="card-header">
+                <h3>Kehadiran</h3>
+            </div>
             <div class="card-value">94%</div>
-            <div class="card-change positive">⬆️ 2% dari bulan lalu</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 2% dari bulan lalu</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Pengajuan Baru</h3></div>
+            <div class="card-header">
+                <h3>Pengajuan Baru</h3>
+            </div>
             <div class="card-value">3</div>
             <div class="card-change">2 cuti, 1 izin</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Turnover</h3></div>
+            <div class="card-header">
+                <h3>Turnover</h3>
+            </div>
             <div class="card-value">1.2%</div>
-            <div class="card-change positive">⬇️ 0.3%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-down"></i> 0.3%</div>
         </div>
     </div>
 
     <!-- Production Section -->
-    <h2 style="margin: 2rem 0 1rem; color: var(--base-800);">Production</h2>
+    <h2 class="section-title">Production</h2>
     <div class="grid-4">
         <div class="card">
-            <div class="card-header"><h3>Efisiensi Mesin</h3></div>
+            <div class="card-header">
+                <h3>Efisiensi Mesin</h3>
+            </div>
             <div class="card-value">87%</div>
-            <div class="card-change positive">⬆️ 5%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 5%</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Downtime</h3></div>
+            <div class="card-header">
+                <h3>Downtime</h3>
+            </div>
             <div class="card-value">2.3 jam</div>
-            <div class="card-change negative">⬆️ 0.5 jam</div>
+            <div class="card-change negative"><i class="fas fa-arrow-up"></i> 0.5 jam</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Target Bulanan</h3></div>
+            <div class="card-header">
+                <h3>Target Bulanan</h3>
+            </div>
             <div class="card-value">78%</div>
             <div class="card-change">tersisa 22%</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Quality Control</h3></div>
+            <div class="card-header">
+                <h3>Quality Control</h3>
+            </div>
             <div class="card-value">98.5%</div>
-            <div class="card-change positive">⬆️ 0.2%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 0.2%</div>
         </div>
     </div>
 
     <!-- Finance Section -->
-    <h2 style="margin: 2rem 0 1rem; color: var(--base-800);">Finance</h2>
+    <h2 class="section-title">Finance</h2>
     <div class="grid-4">
         <div class="card">
-            <div class="card-header"><h3>Profit Margin</h3></div>
+            <div class="card-header">
+                <h3>Profit Margin</h3>
+            </div>
             <div class="card-value">32%</div>
-            <div class="card-change positive">⬆️ 3%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 3%</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Cash Flow</h3></div>
+            <div class="card-header">
+                <h3>Cash Flow</h3>
+            </div>
             <div class="card-value">+Rp 580M</div>
-            <div class="card-change positive">⬆️ 12%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 12%</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Outstanding Invoice</h3></div>
+            <div class="card-header">
+                <h3>Outstanding Invoice</h3>
+            </div>
             <div class="card-value">Rp 420M</div>
             <div class="card-change warning">30 hari+</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Operational Cost</h3></div>
+            <div class="card-header">
+                <h3>Operational Cost</h3>
+            </div>
             <div class="card-value">Rp 1.2M</div>
-            <div class="card-change">⬇️ 4%</div>
+            <div class="card-change"><i class="fas fa-arrow-down"></i> 4%</div>
         </div>
     </div>
 
     <!-- Sales & Marketing -->
-    <h2 style="margin: 2rem 0 1rem; color: var(--base-800);">Sales & Marketing</h2>
+    <h2 class="section-title">Sales & Marketing</h2>
     <div class="grid-2">
         <div class="card">
-            <div class="card-header"><h3>Konversi Lead</h3></div>
+            <div class="card-header">
+                <h3>Konversi Lead</h3>
+            </div>
             <div class="card-value">62%</div>
-            <div class="card-change positive">⬆️ 7%</div>
+            <div class="card-change positive"><i class="fas fa-arrow-up"></i> 7%</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Nilai Rata-rata</h3></div>
+            <div class="card-header">
+                <h3>Nilai Rata-rata</h3>
+            </div>
             <div class="card-value">Rp 2.1M</div>
             <div class="card-change">per transaksi</div>
         </div>
     </div>
 
     <!-- Project -->
-    <h2 style="margin: 2rem 0 1rem; color: var(--base-800);">Project</h2>
+    <h2 class="section-title">Project</h2>
     <div class="grid-4">
         <div class="card">
-            <div class="card-header"><h3>Aktif</h3></div>
+            <div class="card-header">
+                <h3>Aktif</h3>
+            </div>
             <div class="card-value">12</div>
             <div class="card-change">8 on track</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>At Risk</h3></div>
+            <div class="card-header">
+                <h3>At Risk</h3>
+            </div>
             <div class="card-value">3</div>
             <div class="card-change warning">butuh perhatian</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Overdue</h3></div>
+            <div class="card-header">
+                <h3>Overdue</h3>
+            </div>
             <div class="card-value">1</div>
             <div class="card-change negative">⚠️ overdue</div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Completion</h3></div>
+            <div class="card-header">
+                <h3>Completion</h3>
+            </div>
             <div class="card-value">68%</div>
             <div class="card-change">rata-rata</div>
         </div>
     </div>
 
     <!-- Recent Activity -->
-    <h2 style="margin: 2rem 0 1rem; color: var(--base-800);">Aktivitas Terkini</h2>
+    <h2 class="section-title">Aktivitas Terkini</h2>
     <div class="card" style="padding: 1rem;">
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
             <div style="display: flex; gap: 0.75rem; align-items: center;">
