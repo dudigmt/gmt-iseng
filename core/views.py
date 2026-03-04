@@ -22,6 +22,24 @@ def login_view(request):
 
 @login_required
 def dashboard(request):
+    # CEK ROLE USER
+    groups = request.user.groups.all()
+    
+    if request.user.is_superuser:
+        role = 'Super Admin'
+    elif groups.filter(name='HR').exists():
+        role = 'HR Staff'
+    elif groups.filter(name='Acc. & Fin.').exists():
+        role = 'Finance Staff'
+    elif groups.filter(name='Production').exists():
+        role = 'Production Staff'
+    elif groups.filter(name='Marketing').exists():
+        role = 'Marketing Staff'
+    elif request.user.is_staff:
+        role = 'Admin'
+    else:
+        role = 'User'
+
     context = {
         'hr_count': 156,
         'prod_count': 12450,
@@ -29,6 +47,7 @@ def dashboard(request):
         'hr_change': '+12',
         'prod_change': '+8%',
         'fin_change': '+15%',
+        'user_role': role,
     }
     return render(request, 'core/dashboard.html', context)
 
