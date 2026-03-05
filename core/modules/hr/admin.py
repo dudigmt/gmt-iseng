@@ -3,6 +3,6 @@ from .models import Employee
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ['nik', 'nama', 'departemen', 'posisi', 'tgl_masuk', 'gaji']
-    list_filter = ['departemen', 'posisi']
-    search_fields = ['nama', 'nik']
+    list_display = ['nik', 'nama', 'jabatan', 'dept', 'status_karyawan', 'tgl_rekrut']
+    list_filter = ['status_karyawan', 'dept', 'jabatan']
+    search_fields = ['nama', 'nik', 'no_ktp']
