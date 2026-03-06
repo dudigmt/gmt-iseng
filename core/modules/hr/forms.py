@@ -4,7 +4,7 @@ from .models import Employee
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = '__all__'  # atau tulis semua field manual
+        fields = '__all__'
         widgets = {
             'tgl_lahir': forms.DateInput(attrs={'type': 'date'}),
             'tgl_rekrut': forms.DateInput(attrs={'type': 'date'}),
