@@ -99,7 +99,7 @@ DATABASES = {
         'USER': 'adung',  # ganti dengan user yang tadi dibuat
         'PASSWORD': '1234',  # password user
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 

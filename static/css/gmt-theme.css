@@ -1,0 +1,215 @@
+/* GMT Design System - Tokens */
+:root {
+    /* Warna Brand */
+    --cobalt: #0047AB;
+    --burnt-orange: #CC5500;
+    --forest-green: #228B22;
+    --vr46-yellow: #FFD100;
+    
+    /* Scale Warna */
+    --primary-50: #e6f0ff;
+    --primary-100: #cce0ff;
+    --primary-200: #99c2ff;
+    --primary-300: #66a3ff;
+    --primary-400: #3385ff;
+    --primary-500: var(--cobalt);
+    --primary-600: #003a8c;
+    --primary-700: #002c69;
+    --primary-800: #001d46;
+    --primary-900: #000f23;
+    
+    /* Neutral */
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 9999px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+/* Dark Mode */
+.dark {
+    --gray-50: #0b0f1a;
+    --gray-100: #1a1f2e;
+    --gray-200: #2a3142;
+    --gray-300: #3a4356;
+    --gray-400: #5c667a;
+    --gray-500: #7e8a9e;
+    --gray-600: #a0aec0;
+    --gray-700: #cbd5e1;
+    --gray-800: #e2e8f0;
+    --gray-900: #f1f5f9;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-700);
+}
+
+/* Component: Card */
+.gmt-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s;
+}
+.dark .gmt-card {
+    background: var(--gray-100);
+    border-color: var(--gray-300);
+}
+.gmt-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Component: Button */
+.gmt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+}
+.gmt-btn-primary {
+    background: var(--primary-500);
+    color: white;
+}
+.gmt-btn-primary:hover {
+    background: var(--primary-600);
+}
+.gmt-btn-secondary {
+    background: var(--gray-200);
+    color: var(--gray-700);
+}
+.gmt-btn-secondary:hover {
+    background: var(--gray-300);
+}
+
+/* Component: Input */
+.gmt-input {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    background: white;
+}
+.dark .gmt-input {
+    background: var(--gray-100);
+    border-color: var(--gray-500);
+    color: var(--gray-200);
+}
+.gmt-input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+/* Component: Table */
+.gmt-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.gmt-table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.dark .gmt-table th {
+    background: var(--gray-200);
+    color: var(--gray-400);
+}
+.gmt-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-200);
+}
+.dark .gmt-table td {
+    border-bottom-color: var(--gray-300);
+}
+
+/* Component: Badge */
+.gmt-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+.gmt-badge-success {
+    background: #e6f7e6;
+    color: #2e7d32;
+}
+.dark .gmt-badge-success {
+    background: rgba(46, 125, 50, 0.2);
+    color: #81c784;
+}
+.gmt-badge-warning {
+    background: #fff3e6;
+    color: #b76e1b;
+}
+.gmt-badge-info {
+    background: #e6f3ff;
+    color: #0d47a1;
+}
+
+/* Layout Helpers */
+.gmt-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+.gmt-grid {
+    display: grid;
+    gap: var(--space-6);
+}
+.gmt-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+.gmt-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+.gmt-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
